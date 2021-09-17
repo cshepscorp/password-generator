@@ -57,11 +57,11 @@ function generatePassword() {
     if (confirmUpperCase) {
         userInputs.push(upperCase);
     };
-    if (confirmLowerCase) {
+    if (confirmSpecial) {
         userInputs.push(special);
     };
     // values for each character type?
-    console.log("number: " + confirmNumerical, "lowercase: " + confirmLowerCase, "uppercase: " + confirmUpperCase, "specialcharacters: " + confirmLowerCase);
+    console.log("number: " + confirmNumerical, "lowercase: " + confirmLowerCase, "uppercase: " + confirmUpperCase, "specialcharacters: " + confirmSpecial);
 
     // is the array saving these values?
     console.log("user inputs array: " + userInputs);  
@@ -71,23 +71,23 @@ function generatePassword() {
         counter = length;
         
         // new array
+        let randomArray;
+        let chosenArray;
         let randomNumber;
-        let whichArray;
-        let randomIndex;
         let randomCharacter;
 
         // chooses a single, random number that selects which array of characters to loop through
         // this will always be between 1 and 4; 4 possible arrays pushed to userInputs
-        randomNumber = Math.floor(Math.random() * userInputs.length);
-        console.log(randomNumber + " is my randomly selected number");
+        randomArray = Math.floor(Math.random() * userInputs.length); 
+        console.log(randomArray + " is my randomly selected array");
 
-        whichArray = userInputs[randomNumber];
-        console.log(whichArray + " is the array of characters chosen");
+        chosenArray = userInputs[randomArray];  
+        console.log(chosenArray + " the characters in the array chosen");
 
-        randomIndex = Math.floor(Math.random() * whichArray.length);
-        console.log(randomIndex + " is the randomly selected position in the array");
+        randomNumber = Math.floor(Math.random() * chosenArray.length); // whatever random number is selected here determines which character gets chosen
+        console.log(randomNumber + " is the randomly selected position in the array"); // but why is it one off?
 
-        randomCharacter = whichArray[randomIndex];
+        randomCharacter = chosenArray[randomNumber]; // takes random number from above var and uses it to select a character from the array chosen
         console.log(randomCharacter + " is randomly selected character");
 
         password += randomCharacter;
